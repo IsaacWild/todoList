@@ -94,7 +94,7 @@ body{
     grid-column: 1/-1;
     display: grid;
     grid-template: auto 1fr / repeat(4, auto);
-    overflow: scroll;
+    overflow: auto;
 }
 
 /* Footer */
