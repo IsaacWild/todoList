@@ -17,7 +17,7 @@ const selectTodoPriority = document.createElement('select')
 const priorityHigh = document.createElement('option')
 const priorityMed = document.createElement('option')
 const priorityLow = document.createElement('option')
-const btnSubmit = document.createElement('button')
+const btnSubmit = document.createElement('input')
 
 //todo Form Classes
 formWrapper.classList.add('formWrapperActive')
@@ -26,6 +26,7 @@ btnSubmit.classList.add('btnSubmit')
 //todo Form Content
 form.setAttribute('name', 'maketodoItem')
 form.setAttribute('id', 'maketodoItem')
+form.setAttribute('action', '#')
 legend.textContent = 'Create your ToDo Item'
 lblTodoTitle.setAttribute('for', 'todoTitle')
 lblTodoTitle.textContent = 'Title: '
@@ -56,7 +57,8 @@ priorityMed.setAttribute('value','Medium')
 priorityMed.textContent = 'Medium'
 priorityLow.setAttribute('value','Low')
 priorityLow.textContent = 'Low'
-btnSubmit.textContent= 'Create ToDo Item'
+btnSubmit.setAttribute('type','submit')
+btnSubmit.setAttribute('value','Add ToDo Item')
 //todo Form Append
 todoWrapper.append(formWrapper)
 formWrapper.appendChild(form)
@@ -64,11 +66,7 @@ form.appendChild(feildset)
 feildset.append(legend,lblTodoTitle,inputTodoTitle,lblTodoDescription,inputTodoDescription,lblTodoDate,inputTodoDate,lblTodoPriority,selectTodoPriority, btnSubmit)
 selectTodoPriority.append(priorityHigh,priorityMed,priorityLow)
 //event Listeners
-btnSubmit.addEventListener('click', () => {
-  if(form.checkValidity()){
-    formWrapper.classList.toggle('formWrapperInactive')
-  }
-})
+
 }
 
 export default todoForm
