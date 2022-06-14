@@ -5,7 +5,8 @@ module.exports = {
     mode: "development",
     entry: {
         index: './src/index.js',
-        print: './src/print.js',
+        todoForm: './src/todoForm.js',
+        projectForm: './src/projectForm.js',
       },
       devtool: 'inline-source-map',
       devServer: {

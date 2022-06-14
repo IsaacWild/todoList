@@ -1,6 +1,9 @@
 import './style.css';
+import './todoFormStyle.css'
 import icon from './icons/todoIcon.svg'
-import printMe from './print.js';
+import todoForm from './todoForm.js';
+import projectForm from './projectForm.js';
+
 
 //initial page wrapper container
 const pageWrapper = document.createElement('div');
@@ -55,6 +58,12 @@ btnClearCompleted.textContent = 'Clear Completed'
 sidebar.append(activeTitle,activeProWrapper,completeTitle, completedProWrapper);
 activeTitle.appendChild(btnAddProject)
 completeTitle.appendChild(btnClearCompleted)
+//event listeners
+btnAddProject.addEventListener('click', () =>{
+    projectForm()
+})
+
+
 //body --v
 //body layout
 const bodyTitle = document.createElement('p')
@@ -63,6 +72,7 @@ const todoHeadDescription = document.createElement('p')
 const todoHeadDate = document.createElement('p')
 const todoHeadPriority = document.createElement('p')
 const todoWrapper = document.createElement('div')
+const btnAddTodo = document.createElement('button')
 //body classes
 body.classList.add('body')
 bodyTitle.classList.add('bodyTitle')
@@ -71,80 +81,23 @@ todoHeadDescription.classList.add('todoHead', 'headDescription')
 todoHeadDate.classList.add('todoHead', 'headDate')
 todoHeadPriority.classList.add('todoHead', 'headPriority')
 todoWrapper.classList.add('todoWrapper')
+btnAddTodo.classList.add('btnAddTodoItem')
 //body content
 bodyTitle.textContent = 'Project Title'
 todoHeadTitle.textContent = 'Title'
 todoHeadDescription.textContent = 'Description'
 todoHeadDate.textContent = 'Due Date'
 todoHeadPriority.textContent = 'Priority'
+btnAddTodo.textContent = 'Add ToDo Item'
 //body append
-body.append(bodyTitle,todoWrapper)
+body.append(bodyTitle,btnAddTodo,todoWrapper)
 todoWrapper.append(todoHeadTitle,todoHeadDescription,todoHeadDate,todoHeadPriority)
+//event listeners
+btnAddTodo.addEventListener('click', () =>{
+    todoForm()
+})
 
-//Project Form --v
-//Form Layout
-const formWrapper = document.createElement('div')
-const form = document.createElement('form')
-const feildset = document.createElement('fieldset')
-const legend = document.createElement('legend')
-const lblTodoTitle = document.createElement('label')
-const inputTodoTitle = document.createElement('input')
-const lblTodoDescription = document.createElement('label')
-const inputTodoDescription = document.createElement('input')
-const lblTodoDate = document.createElement('label')
-const inputTodoDate = document.createElement('input')
-const lblTodoPriority = document.createElement('label')
-const selectTodoPriority = document.createElement('select')
-const priorityHigh = document.createElement('option')
-const priorityMed = document.createElement('option')
-const priorityLow = document.createElement('option')
-const btnSubmit = document.createElement('input')
 
-//Form Classes
-formWrapper.classList.add('formWrapper')
-feildset.classList.add('feildset')
-btnSubmit.classList.add('btnSubmit')
-//form Content
-form.setAttribute('name', 'maketodoItem')
-form.setAttribute('onsubmit', 'formSubmit()')
-legend.textContent = 'Create your ToDo Item'
-lblTodoTitle.setAttribute('for', 'todoTitle')
-lblTodoTitle.textContent = 'Title: '
-inputTodoTitle.setAttribute('type', 'text')
-inputTodoTitle.setAttribute('id', 'todoTitle')
-inputTodoTitle.setAttribute('name', 'todoTitle')
-inputTodoTitle.setAttribute('required', 'required')
-lblTodoDescription.setAttribute('for', 'todoDescription')
-lblTodoDescription.textContent = 'Description: '
-inputTodoDescription.setAttribute('type','text')
-inputTodoDescription.setAttribute('id','todoDescription')
-inputTodoDescription.setAttribute('name','todoDescription')
-inputTodoDescription.setAttribute('required','required')
-lblTodoDate.setAttribute = ('for', 'todoDate')
-lblTodoDate.textContent = 'Due Date:'
-inputTodoDate.setAttribute('type','date')
-inputTodoDate.setAttribute('id','todoDate')
-inputTodoDate.setAttribute('name','todoDate')
-inputTodoDate.setAttribute('required','required')
-lblTodoPriority.setAttribute('for', 'todoPriority')
-lblTodoPriority.textContent = 'Priority: '
-selectTodoPriority.setAttribute('name','todoPriority')
-selectTodoPriority.setAttribute('id','todoPriority')
-selectTodoPriority.setAttribute('required','required')
-priorityHigh.setAttribute('value','High')
-priorityHigh.textContent = 'High'
-priorityMed.setAttribute('value','Medium')
-priorityMed.textContent = 'Medium'
-priorityLow.setAttribute('value','Low')
-priorityLow.textContent = 'Low'
-btnSubmit.setAttribute('type', 'submit')
-btnSubmit.setAttribute('value', 'Create ToDo Item')
-//Form Append
-todoWrapper.append(formWrapper)
-formWrapper.appendChild(form)
-form.appendChild(feildset)
-feildset.append(legend,lblTodoTitle,inputTodoTitle,lblTodoDescription,inputTodoDescription,lblTodoDate,inputTodoDate,lblTodoPriority,selectTodoPriority, btnSubmit)
-selectTodoPriority.append(priorityHigh,priorityMed,priorityLow)
 
 //footer --v
 //footer layout
