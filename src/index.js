@@ -96,6 +96,7 @@ todoWrapper.append(todoHeadTitle,todoHeadDescription,todoHeadDate,todoHeadPriori
 //event listeners
 btnAddTodo.addEventListener('click', () =>{
     todoForm()
+    //disable button when form open and re-enable on form close, otherwise able to stack todo forms!!
 })
 
 
