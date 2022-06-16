@@ -1,15 +1,14 @@
 .projectFormWrapperActive{
     background-color: hsla(27, 0%, 25%, 0.85);
     grid-area: 1/ 1 / -1/ -1;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr;
     align-items: center;
     justify-items: center;
     color: white;
     border-radius: 1rem;
     z-index: 500;
     padding: 1rem;
-    display: grid;
-    grid-template-columns: 1fr;
 }
 
 .projectFormWrapperInactive{
@@ -19,13 +18,31 @@
 
 .projectFeildset{
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr 3fr;
     row-gap: 2rem;
     column-gap: 1rem;
     justify-items:stretch;
     text-align: right;
-    font-size: 2rem;
-    width: 80%;
+    font-size: 1rem;
+    padding: 1rem;
+
+}
+
+.proLegend{
+    font-size: 1.5rem;
+}
+
+.proLabel{
+    font-size: 1.3rem;
+    align-self: center;
+    text-align: center;
+}
+
+.proInput{
+    font-size: 1.5rem;
+    height: 2.4rem;
+    width: 100%;
+    align-self: center;
 }
 
 .btnProjectSubmit{
@@ -35,7 +52,6 @@
     font-size: 1.5rem;
     border-radius: 2rem;
     border: none;
-    margin-top: 1rem;
     padding: 0.8rem;
     cursor: pointer;
 }

@@ -1,5 +1,6 @@
 import './style.css';
 import './todoFormStyle.css'
+import './projectFormStyle.css'
 import icon from './icons/todoIcon.svg'
 import todoForm from './todoForm.js';
 import projectForm from './projectForm.js';
