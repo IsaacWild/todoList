@@ -4,12 +4,13 @@ function projectForm(){
 
 const sidebar = document.querySelector('.sidebar')
 const projectFormWrapper = document.createElement('div')
-const form = document.createElement('form')
+const form = document.createElement('div')
 const proFeildset = document.createElement('fieldset')
 const legend = document.createElement('legend')
 const lblProjectTitle = document.createElement('label')
 const inputProjectTitle = document.createElement('input')
 const btnProjectSubmit = document.createElement('input')
+const btnProjectCancel = document.createElement('button')
 
 // Classes
 projectFormWrapper.classList.add('projectFormWrapperActive')
@@ -18,6 +19,7 @@ legend.classList.add('proLegend')
 lblProjectTitle.classList.add('proLabel')
 inputProjectTitle.classList.add('proInput')
 btnProjectSubmit.classList.add('btnProjectSubmit')
+btnProjectCancel.classList.add('btnProjectCancel')
 // Content
 form.setAttribute('name', 'maketodoItem')
 form.setAttribute('onsubmit', 'formSubmit()')
@@ -32,12 +34,17 @@ inputProjectTitle.setAttribute("minlength", "1")
 inputProjectTitle.setAttribute("maxlength", "30")
 btnProjectSubmit.setAttribute('type','submit')
 btnProjectSubmit.setAttribute('value','Add Project')
+btnProjectCancel.textContent = 'Cancel'
 
 // Append
 sidebar.append(projectFormWrapper)
 projectFormWrapper.appendChild(form)
 form.appendChild(proFeildset)
-proFeildset.append(legend, lblProjectTitle,inputProjectTitle,btnProjectSubmit)
+proFeildset.append(legend,lblProjectTitle,inputProjectTitle,btnProjectCancel,btnProjectSubmit)
+
+btnProjectCancel.addEventListener('click', () =>{
+    projectFormWrapper.classList.toggle('projectFormWrapperInactive')
+})
 
 }
 

@@ -82,6 +82,7 @@ todoHeadDescription.classList.add('todoHead', 'headDescription')
 todoHeadDate.classList.add('todoHead', 'headDate')
 todoHeadPriority.classList.add('todoHead', 'headPriority')
 todoWrapper.classList.add('todoWrapper')
+//TODO Add Inactive as default until project is loaded in.
 btnAddTodo.classList.add('btnAddTodoItem')
 //body content
 bodyTitle.textContent = 'Project Title'
@@ -96,6 +97,7 @@ todoWrapper.append(todoHeadTitle,todoHeadDescription,todoHeadDate,todoHeadPriori
 //event listeners
 btnAddTodo.addEventListener('click', () =>{
     todoForm()
+    btnAddTodo.classList.add('btnAddTodoItemInactive')
     //disable button when form open and re-enable on form close, otherwise able to stack todo forms!!
 })
 

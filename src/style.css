@@ -159,6 +159,12 @@ body{
     box-shadow: -2px 2px 3px hsl(27, 0%, 35%);
 }
 
+.btnAddTodoItemInactive{
+    pointer-events: none;
+    background-color: hsl(27, 70%, 45%);
+    text-decoration: line-through;
+}
+
 .todoWrapper{
     grid-column: 1/-1;
     display: grid;

@@ -2,8 +2,9 @@ function todoForm(){
 //todo Form --v
 //Form Layout
 const todoWrapper = document.querySelector('.todoWrapper')
+const btnAddTodo = document.querySelector('.btnAddTodoItem')
 const formWrapper = document.createElement('div')
-const form = document.createElement('form')
+const form = document.createElement('div')
 const feildset = document.createElement('fieldset')
 const legend = document.createElement('legend')
 const lblTodoTitle = document.createElement('label')
@@ -17,12 +18,14 @@ const selectTodoPriority = document.createElement('select')
 const priorityHigh = document.createElement('option')
 const priorityMed = document.createElement('option')
 const priorityLow = document.createElement('option')
-const btnSubmit = document.createElement('input')
+const btnSubmit = document.createElement('button')
+const btnCancel = document.createElement('button')
 
 //todo Form Classes
 formWrapper.classList.add('formWrapperActive')
 feildset.classList.add('feildset')
 btnSubmit.classList.add('btnSubmit')
+btnCancel.classList.add('btnCancel')
 //todo Form Content
 form.setAttribute('name', 'maketodoItem')
 form.setAttribute('id', 'maketodoItem')
@@ -57,15 +60,20 @@ priorityMed.setAttribute('value','Medium')
 priorityMed.textContent = 'Medium'
 priorityLow.setAttribute('value','Low')
 priorityLow.textContent = 'Low'
-btnSubmit.setAttribute('type','submit')
-btnSubmit.setAttribute('value','Add ToDo Item')
+btnSubmit.textContent = 'Add ToDo Item'
+btnCancel.textContent = 'Cancel'
 //todo Form Append
 todoWrapper.append(formWrapper)
 formWrapper.appendChild(form)
 form.appendChild(feildset)
-feildset.append(legend,lblTodoTitle,inputTodoTitle,lblTodoDescription,inputTodoDescription,lblTodoDate,inputTodoDate,lblTodoPriority,selectTodoPriority, btnSubmit)
+feildset.append(legend,lblTodoTitle,inputTodoTitle,lblTodoDescription,inputTodoDescription,lblTodoDate,inputTodoDate,lblTodoPriority,selectTodoPriority,btnCancel,btnSubmit)
 selectTodoPriority.append(priorityHigh,priorityMed,priorityLow)
 //event Listeners
+
+btnCancel.addEventListener('click', () =>{
+    formWrapper.classList.toggle('formWrapperInactive')
+    btnAddTodo.classList.remove('btnAddTodoItemInactive')
+})
 
 }
 
