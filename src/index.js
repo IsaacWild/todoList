@@ -39,6 +39,7 @@ const activeProWrapper = document.createElement('div')
 const completedProWrapper = document.createElement('div')
 const btnAddProject = document.createElement('button')
 const btnClearCompleted = document.createElement('button')
+const projectFormWrapper = document.createElement('div')
 
 //sidebarclasses
 sidebar.classList.add('sidebar')
@@ -48,6 +49,8 @@ activeProWrapper.classList.add('activeProWrapper')
 completedProWrapper.classList.add('completedProWrapper')
 btnAddProject.classList.add('btnAddProject')
 btnClearCompleted.classList.add('btnClearCompleted')
+projectFormWrapper.classList.add('projectFormWrapperActive', 'projectFormWrapperInactive')
+
 //sidebarcontent
 activeTitle.textContent = 'Active Projects'
 completeTitle.textContent = 'Completed Projects'
@@ -56,11 +59,12 @@ completedProWrapper.textContent = 'Away'
 btnAddProject.textContent = 'Add Project'
 btnClearCompleted.textContent = 'Clear Completed'
 //sidebar append
-sidebar.append(activeTitle,activeProWrapper,completeTitle, completedProWrapper);
+sidebar.append(projectFormWrapper,activeTitle,activeProWrapper,completeTitle, completedProWrapper);
 activeTitle.appendChild(btnAddProject)
 completeTitle.appendChild(btnClearCompleted)
 //event listeners
 btnAddProject.addEventListener('click', () =>{
+    projectFormWrapper.classList.remove('projectFormWrapperInactive')
     projectForm()
 })
 

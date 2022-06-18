@@ -2,8 +2,8 @@ function projectForm(){
 // Project Form --v
 // Form Layout
 
-const sidebar = document.querySelector('.sidebar')
-const projectFormWrapper = document.createElement('div')
+// const sidebar = document.querySelector('.sidebar')
+const projectFormWrapper = document.querySelector('.projectFormWrapperActive')
 const form = document.createElement('div')
 const proFeildset = document.createElement('fieldset')
 const legend = document.createElement('legend')
@@ -13,7 +13,7 @@ const btnProjectSubmit = document.createElement('input')
 const btnProjectCancel = document.createElement('button')
 
 // Classes
-projectFormWrapper.classList.add('projectFormWrapperActive')
+// projectFormWrapper.classList.add('projectFormWrapperActive')
 proFeildset.classList.add('projectFeildset')
 legend.classList.add('proLegend')
 lblProjectTitle.classList.add('proLabel')
@@ -37,14 +37,22 @@ btnProjectSubmit.setAttribute('value','Add Project')
 btnProjectCancel.textContent = 'Cancel'
 
 // Append
-sidebar.append(projectFormWrapper)
+// sidebar.append(projectFormWrapper)
 projectFormWrapper.appendChild(form)
 form.appendChild(proFeildset)
 proFeildset.append(legend,lblProjectTitle,inputProjectTitle,btnProjectCancel,btnProjectSubmit)
 
 btnProjectCancel.addEventListener('click', () =>{
+    clearForm()
     projectFormWrapper.classList.toggle('projectFormWrapperInactive')
 })
+
+//functions
+function clearForm() {
+    while (projectFormWrapper.firstChild) {
+        projectFormWrapper.removeChild(projectFormWrapper.lastChild);
+      }
+}
 
 }
 

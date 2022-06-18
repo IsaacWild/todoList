@@ -190,6 +190,24 @@ body{
     grid-area: 1/4/2/5;
 }
 
+.projectFormWrapperActive{
+    background-color: hsla(27, 0%, 25%, 0.85);
+    grid-area: 1/ 1 / -1/ -1;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    border-radius: 1rem;
+    z-index: 500;
+    padding: 1rem;
+}
+
+.projectFormWrapperInactive{
+    z-index: -500;
+    pointer-events: none;
+}
+
 
 /* Footer */
 .footer{
