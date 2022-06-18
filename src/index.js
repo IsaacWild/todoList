@@ -74,6 +74,8 @@ const todoHeadDate = document.createElement('p')
 const todoHeadPriority = document.createElement('p')
 const todoWrapper = document.createElement('div')
 const btnAddTodo = document.createElement('button')
+const formWrapper = document.createElement('div')
+
 //body classes
 body.classList.add('body')
 bodyTitle.classList.add('bodyTitle')
@@ -82,6 +84,7 @@ todoHeadDescription.classList.add('todoHead', 'headDescription')
 todoHeadDate.classList.add('todoHead', 'headDate')
 todoHeadPriority.classList.add('todoHead', 'headPriority')
 todoWrapper.classList.add('todoWrapper')
+formWrapper.classList.add('formWrapperActive','formWrapperInactive')
 //TODO Add Inactive as default until project is loaded in.
 btnAddTodo.classList.add('btnAddTodoItem')
 //body content
@@ -93,7 +96,7 @@ todoHeadPriority.textContent = 'Priority'
 btnAddTodo.textContent = 'Add ToDo Item'
 //body append
 body.append(bodyTitle,btnAddTodo,todoWrapper)
-todoWrapper.append(todoHeadTitle,todoHeadDescription,todoHeadDate,todoHeadPriority)
+todoWrapper.append(formWrapper,todoHeadTitle,todoHeadDescription,todoHeadDate,todoHeadPriority)
 //event listeners
 btnAddTodo.addEventListener('click', () =>{
     todoForm()

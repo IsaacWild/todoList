@@ -1,9 +1,8 @@
 function todoForm(){
 //todo Form --v
 //Form Layout
-const todoWrapper = document.querySelector('.todoWrapper')
 const btnAddTodo = document.querySelector('.btnAddTodoItem')
-const formWrapper = document.createElement('div')
+const formWrapper = document.querySelector('.formWrapperActive')
 const form = document.createElement('div')
 const feildset = document.createElement('fieldset')
 const legend = document.createElement('legend')
@@ -22,7 +21,7 @@ const btnSubmit = document.createElement('button')
 const btnCancel = document.createElement('button')
 
 //todo Form Classes
-formWrapper.classList.add('formWrapperActive')
+formWrapper.classList.remove('formWrapperInactive')
 feildset.classList.add('feildset')
 btnSubmit.classList.add('btnSubmit')
 btnCancel.classList.add('btnCancel')
@@ -63,7 +62,6 @@ priorityLow.textContent = 'Low'
 btnSubmit.textContent = 'Add ToDo Item'
 btnCancel.textContent = 'Cancel'
 //todo Form Append
-todoWrapper.append(formWrapper)
 formWrapper.appendChild(form)
 form.appendChild(feildset)
 feildset.append(legend,lblTodoTitle,inputTodoTitle,lblTodoDescription,inputTodoDescription,lblTodoDate,inputTodoDate,lblTodoPriority,selectTodoPriority,btnCancel,btnSubmit)
@@ -71,9 +69,17 @@ selectTodoPriority.append(priorityHigh,priorityMed,priorityLow)
 //event Listeners
 
 btnCancel.addEventListener('click', () =>{
-    formWrapper.classList.toggle('formWrapperInactive')
+    removeForm()
     btnAddTodo.classList.remove('btnAddTodoItemInactive')
+    formWrapper.classList.add('formWrapperInactive')
 })
+
+//functions
+function removeForm(){
+    while (formWrapper.firstChild) {
+        formWrapper.removeChild(formWrapper.lastChild);
+      }
+}
 
 }
 
