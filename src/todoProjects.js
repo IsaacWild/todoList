@@ -47,6 +47,7 @@ function completeProject(projectName){
             console.log(projectName + ' was removed from the project list')
             console.log('current project Array: ' + projects)
             console.log('current completed project Array: ' + completedProjects)
+            return
         }   
     }
 }
