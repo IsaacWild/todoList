@@ -1,3 +1,5 @@
+import { createProject } from "./todoProjects"
+
 function projectForm(){
 // Project Form --v
 // Form Layout
@@ -42,16 +44,27 @@ projectFormWrapper.appendChild(form)
 form.appendChild(proFeildset)
 proFeildset.append(legend,lblProjectTitle,inputProjectTitle,btnProjectCancel,btnProjectSubmit)
 
+//listeners
 btnProjectCancel.addEventListener('click', () =>{
     clearForm()
-    projectFormWrapper.classList.toggle('projectFormWrapperInactive')
 })
+
+btnProjectSubmit.addEventListener('click', () =>{
+    let projectTitle = inputProjectTitle.value
+    if(projectTitle != ''){
+        createProject(projectTitle);
+        clearForm()
+    } else{
+        alert('Please enter a project title')
+    }
+} )
 
 //functions
 function clearForm() {
     while (projectFormWrapper.firstChild) {
         projectFormWrapper.removeChild(projectFormWrapper.lastChild);
       }
+    projectFormWrapper.classList.toggle('projectFormWrapperInactive')
 }
 
 }

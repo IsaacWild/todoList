@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap');
 
-*{
-    /* outline: solid blue 1px; */
-}
+/* *{
+    outline: solid blue 1px;
+} */
 
 body{
     margin: 0;
@@ -79,7 +79,11 @@ body{
     background-color: #E2D1C3;
     box-shadow: 0px 2px 3px hsl(27, 0%, 35%);
     grid-area: 2/1/3/2;
-
+    grid-template-rows: repeat(auto-fit, 3rem);
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
+    padding: 1rem;
+    overflow: auto;
 }
 
 .completedProWrapper{
@@ -119,6 +123,21 @@ body{
 }
 .btnClearCompleted:hover{
     background-color: hsl(5, 70%, 55%);
+    transform: translate(2px, -2px);
+    transition: all 0.3s;
+    box-shadow: -2px 2px 3px hsl(27, 0%, 35%);
+}
+
+.projectItem{
+    border: none;
+    font-size: 1.7rem;
+    background-color: hsl(5, 70%, 65%);
+    border-radius: 0.4rem;
+    cursor: pointer;
+    margin: 0.2rem;
+}
+.projectItem:hover{
+    background-color: hsl(5, 70%, 75%);
     transform: translate(2px, -2px);
     transition: all 0.3s;
     box-shadow: -2px 2px 3px hsl(27, 0%, 35%);

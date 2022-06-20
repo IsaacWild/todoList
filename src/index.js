@@ -54,7 +54,6 @@ projectFormWrapper.classList.add('projectFormWrapperActive', 'projectFormWrapper
 //sidebarcontent
 activeTitle.textContent = 'Active Projects'
 completeTitle.textContent = 'Completed Projects'
-activeProWrapper.textContent ='Home'
 completedProWrapper.textContent = 'Away'
 btnAddProject.textContent = 'Add Project'
 btnClearCompleted.textContent = 'Clear Completed'
@@ -92,7 +91,7 @@ formWrapper.classList.add('formWrapperActive','formWrapperInactive')
 //TODO Add Inactive as default until project is loaded in.
 btnAddTodo.classList.add('btnAddTodoItem')
 //body content
-bodyTitle.textContent = 'Project Title'
+bodyTitle.textContent = 'No active project'
 todoHeadTitle.textContent = 'Title'
 todoHeadDescription.textContent = 'Description'
 todoHeadDate.textContent = 'Due Date'
@@ -123,3 +122,4 @@ footer2.href = 'https://www.svgrepo.com/'
 footer1.href = 'https://github.com/IsaacWild/restaurantPage'
 //footer append
 footer.append(footer1, footer2)
+
