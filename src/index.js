@@ -4,6 +4,7 @@ import './projectFormStyle.css'
 import icon from './icons/todoIcon.svg'
 import todoForm from './todoForm.js';
 import projectForm from './projectForm.js';
+import { completedProjects } from './todoProjects';
 
 
 //initial page wrapper container
@@ -54,7 +55,6 @@ projectFormWrapper.classList.add('projectFormWrapperActive', 'projectFormWrapper
 //sidebarcontent
 activeTitle.textContent = 'Active Projects'
 completeTitle.textContent = 'Completed Projects'
-completedProWrapper.textContent = 'Away'
 btnAddProject.textContent = 'Add Project'
 btnClearCompleted.textContent = 'Clear Completed'
 //sidebar append
@@ -65,6 +65,13 @@ completeTitle.appendChild(btnClearCompleted)
 btnAddProject.addEventListener('click', () =>{
     projectFormWrapper.classList.remove('projectFormWrapperInactive')
     projectForm()
+})
+btnClearCompleted.addEventListener('click', () =>{
+    while (completedProWrapper.firstChild) {
+        completedProWrapper.removeChild(completedProWrapper.lastChild);
+      }
+      completedProjects.length = 0;
+      console.log('Completed project array: ' + completedProjects)
 })
 
 
@@ -91,7 +98,7 @@ formWrapper.classList.add('formWrapperActive','formWrapperInactive')
 //TODO Add Inactive as default until project is loaded in.
 btnAddTodo.classList.add('btnAddTodoItem')
 //body content
-bodyTitle.textContent = 'No active project'
+bodyTitle.textContent = 'No active project selected'
 todoHeadTitle.textContent = 'Title'
 todoHeadDescription.textContent = 'Description'
 todoHeadDate.textContent = 'Due Date'

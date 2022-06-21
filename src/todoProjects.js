@@ -16,6 +16,7 @@ const projectFactory = (name) => {
         const activeProWrapper = document.querySelector('.activeProWrapper')
         const projectItem = document.createElement('button')
         const projectItemComplete = document.createElement('button')
+        const activeProTitle = document.querySelector('.bodyTitle')
         projectItem.textContent = name
         projectItemComplete.textContent = 'X'
         projectItem.classList.add('projectItem')
@@ -23,11 +24,15 @@ const projectFactory = (name) => {
         activeProWrapper.append(projectItem,projectItemComplete)
         projectItem.addEventListener('click', () => {
             //load todo items into main body
+            activeProTitle.textContent = name
         })
         projectItemComplete.addEventListener('click', () => {
             completeProject(name)
             activeProWrapper.removeChild(projectItem)
             activeProWrapper.removeChild(projectItemComplete)
+            if(activeProTitle.textContent == name){
+                activeProTitle.textContent = 'Active project was marked complete'
+            }
         })
     }
     return {name, newProject, displayProject}
@@ -44,6 +49,11 @@ function completeProject(projectName){
         if (projects[i] == projectName){
             projects.splice(i,1)
             completedProjects.push(projectName)
+            const completedProWrapper = document.querySelector('.completedProWrapper')
+            const completedPro = document.createElement('button')
+            completedPro.classList.add('completedPro')
+            completedPro.textContent = projectName
+            completedProWrapper.appendChild(completedPro)
             console.log(projectName + ' was removed from the project list')
             console.log('current project Array: ' + projects)
             console.log('current completed project Array: ' + completedProjects)
@@ -56,4 +66,4 @@ function completeProject(projectName){
 //     return {project, title, description, date, priority}
 // }
 
-export {createProject}
+export {createProject, projects, completedProjects}

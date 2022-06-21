@@ -1,4 +1,4 @@
-import { createProject } from "./todoProjects"
+import { createProject, projects } from "./todoProjects"
 
 function projectForm(){
 // Project Form --v
@@ -52,8 +52,21 @@ btnProjectCancel.addEventListener('click', () =>{
 btnProjectSubmit.addEventListener('click', () =>{
     let projectTitle = inputProjectTitle.value
     if(projectTitle != ''){
-        createProject(projectTitle);
-        clearForm()
+        console.log('click')
+        if(projects.length != 0){
+            for (let i = 0; i < projects.length; i++) {
+                if(projectTitle == projects[i]){
+                    alert('You have an active project with this title already')
+                }else{
+                    createProject(projectTitle);
+                    clearForm()
+                    break
+                }
+            }
+        }else{
+            createProject(projectTitle);
+            clearForm()
+        }
     } else{
         alert('Please enter a project title')
     }
