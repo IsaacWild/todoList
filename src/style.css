@@ -91,7 +91,7 @@ body{
     justify-items: center;
     text-decoration: line-through;
     border-radius: 1rem;
-    background-color: #E2D1C3;
+    background-color: hsl(27, 35%, 83%);
     box-shadow: 0px 2px 3px hsl(27, 0%, 35%);
     grid-area: 4/1/5/2;
     grid-template-rows: repeat(auto-fit, 3rem);
@@ -162,7 +162,8 @@ body{
     text-align: center;
     padding: 0.5rem;
     display: grid;
-    grid-template: auto 1fr / repeat(4, auto);
+    grid-template: auto auto 1fr / repeat(4, auto);
+    gap:0.5rem;
 }
 
 .bodyTitle{
@@ -196,11 +197,21 @@ body{
     text-decoration: line-through;
 }
 
-.todoWrapper{
+.todoHeaderWrapper{
     grid-column: 1/-1;
     display: grid;
-    grid-template: auto 1fr / repeat(4, auto);
-    overflow: auto;
+    grid-template: auto / repeat(4, 1fr);
+    border-radius: 1rem;
+    background-color: hsl(27, 75%, 60%);
+}
+
+.todoItemWrapper{
+    grid-column: 1/-1;
+    display: grid;
+    grid-template: auto / repeat(4, 1fr);
+    border-radius: 1rem;
+    background-color: hsl(27, 35%, 70%);
+
 }
 
 .todoHead{

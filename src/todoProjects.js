@@ -38,6 +38,7 @@ const projectFactory = (name) => {
     return {name, newProject, displayProject}
 }
 
+
 function createProject(projectName){
     const project = projectFactory(projectName);
     project.newProject();
@@ -62,8 +63,54 @@ function completeProject(projectName){
     }
 }
 
-// const todoItem = (project, title, description, date, priority) =>{
-//     return {project, title, description, date, priority}
-// }
+const todoFactory = (project, todoTitle, todoDescription, todoDate, todoPriority) => {
+    const newTodo = {};
+    newTodo.project = project;
+    newTodo.title = todoTitle;
+    newTodo.description = todoDescription;
+    newTodo.date = todoDate;
+    newTodo.priority = todoPriority;
+    todoItems.push(newTodo)
+    console.log('current todo Array: ')
+    console.table(todoItems)
+    
+    const displayTodo = (projectTitle) => {
+        const itemWrapper = document.querySelector('.todoItemWrapper')
+        for (let i = 0; i < todoItems.length; i++) {
+            if(todoItems[i].project == projectTitle){
+                //create items
+                const todoTitle = document.createElement('p')
+                const todoDescription = document.createElement('p')
+                const todoDate = document.createElement('p')
+                const todoPriority = document.createElement('p')
+                //give values
+                todoTitle.textContent = todoItems[i].title
+                todoDescription.textContent = todoItems[i].description
+                todoDate.textContent = todoItems[i].date
+                todoPriority.textContent = todoItems[i].priority
+                //class?                
+                //append
+                itemWrapper.append(todoTitle,todoDescription,todoDate,todoPriority)
+                console.table(todoItems[i])
+            }
+        }
+    }
+    
+    return {newTodo, displayTodo}
+}
 
-export {createProject, projects, completedProjects}
+function createTodo(project, todoTitle, todoDescription, todoDate, todoPriority) {
+    const todo = todoFactory(project, todoTitle, todoDescription, todoDate, todoPriority)
+    todo.displayTodo(project)
+}
+
+function displayTodo(projectTitle) {
+    todoItems.forEach(newTodo => {
+        if(project == projectTitle){
+            console.log('win')
+        }
+    });
+}
+
+
+export {createProject, todoFactory, createTodo, projects, completedProjects, displayTodo}

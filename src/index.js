@@ -82,7 +82,8 @@ const todoHeadTitle = document.createElement('p')
 const todoHeadDescription = document.createElement('p')
 const todoHeadDate = document.createElement('p')
 const todoHeadPriority = document.createElement('p')
-const todoWrapper = document.createElement('div')
+const todoHeaderWrapper = document.createElement('div')
+const todoItemWrapper = document.createElement('div')
 const btnAddTodo = document.createElement('button')
 const formWrapper = document.createElement('div')
 
@@ -93,9 +94,9 @@ todoHeadTitle.classList.add('todoHead', 'headTitle')
 todoHeadDescription.classList.add('todoHead', 'headDescription')
 todoHeadDate.classList.add('todoHead', 'headDate')
 todoHeadPriority.classList.add('todoHead', 'headPriority')
-todoWrapper.classList.add('todoWrapper')
+todoHeaderWrapper.classList.add('todoHeaderWrapper')
+todoItemWrapper.classList.add('todoItemWrapper')
 formWrapper.classList.add('formWrapperActive','formWrapperInactive')
-//TODO Add Inactive as default until project is loaded in.
 btnAddTodo.classList.add('btnAddTodoItem')
 //body content
 bodyTitle.textContent = 'No active project selected'
@@ -105,12 +106,19 @@ todoHeadDate.textContent = 'Due Date'
 todoHeadPriority.textContent = 'Priority'
 btnAddTodo.textContent = 'Add ToDo Item'
 //body append
-body.append(bodyTitle,btnAddTodo,todoWrapper)
-todoWrapper.append(formWrapper,todoHeadTitle,todoHeadDescription,todoHeadDate,todoHeadPriority)
+body.append(bodyTitle,btnAddTodo,todoHeaderWrapper,todoItemWrapper)
+todoItemWrapper.appendChild(formWrapper)
+todoHeaderWrapper.append(todoHeadTitle,todoHeadDescription,todoHeadDate,todoHeadPriority)
 //event listeners
 btnAddTodo.addEventListener('click', () =>{
-    todoForm()
-    btnAddTodo.classList.add('btnAddTodoItemInactive')
+    const activeProject = document.querySelector('.bodyTitle')
+    let project = activeProject.textContent
+    if ((project == 'No active project selected')||(project == 'Active project was marked complete')){
+        alert('Please select an active project')
+    }else{
+        todoForm()
+        btnAddTodo.classList.add('btnAddTodoItemInactive')
+    }
     //disable button when form open and re-enable on form close, otherwise able to stack todo forms!!
 })
 

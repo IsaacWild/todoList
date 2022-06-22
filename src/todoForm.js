@@ -1,3 +1,6 @@
+import { createTodo } from "./todoProjects"
+
+
 function todoForm(){
 //todo Form --v
 //Form Layout
@@ -67,6 +70,28 @@ form.appendChild(feildset)
 feildset.append(legend,lblTodoTitle,inputTodoTitle,lblTodoDescription,inputTodoDescription,lblTodoDate,inputTodoDate,lblTodoPriority,selectTodoPriority,btnCancel,btnSubmit)
 selectTodoPriority.append(priorityHigh,priorityMed,priorityLow)
 //event Listeners
+
+btnSubmit.addEventListener('click', () =>{
+    //let all the inputs as input values
+    const activeProject = document.querySelector('.bodyTitle')
+    const itemWrapper = document.querySelector('.todoItemWrapper')
+    let project = activeProject.textContent
+    let title = inputTodoTitle.value
+    let description = inputTodoDescription.value
+    let date = inputTodoDate.value
+    let priority = selectTodoPriority.value
+    //set validation for empty
+    if((title != '') && (description != '') && (date != '')){
+        while (itemWrapper.firstChild) {
+            itemWrapper.removeChild(itemWrapper.lastChild);
+        }
+        createTodo(project, title, description, date, priority)
+    }
+    //close form
+    removeForm()
+    btnAddTodo.classList.remove('btnAddTodoItemInactive')
+    formWrapper.classList.add('formWrapperInactive')
+})
 
 btnCancel.addEventListener('click', () =>{
     removeForm()
