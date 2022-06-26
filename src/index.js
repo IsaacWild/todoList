@@ -11,6 +11,7 @@ import { completedProjects } from './todoProjects';
 const pageWrapper = document.createElement('div');
 pageWrapper.classList.add('pageWrapper')
 document.body.appendChild(pageWrapper);
+const formWrapper = document.createElement('div')
 const header = document.createElement('div')
 const sidebar = document.createElement('div')
 const body = document.createElement('div')
@@ -82,10 +83,10 @@ const todoHeadTitle = document.createElement('p')
 const todoHeadDescription = document.createElement('p')
 const todoHeadDate = document.createElement('p')
 const todoHeadPriority = document.createElement('p')
+const todoHeadComplete = document.createElement('p')
 const todoHeaderWrapper = document.createElement('div')
 const todoItemWrapper = document.createElement('div')
 const btnAddTodo = document.createElement('button')
-const formWrapper = document.createElement('div')
 
 //body classes
 body.classList.add('body')
@@ -94,21 +95,23 @@ todoHeadTitle.classList.add('todoHead', 'headTitle')
 todoHeadDescription.classList.add('todoHead', 'headDescription')
 todoHeadDate.classList.add('todoHead', 'headDate')
 todoHeadPriority.classList.add('todoHead', 'headPriority')
+todoHeadComplete.classList.add('todoHead')
 todoHeaderWrapper.classList.add('todoHeaderWrapper')
 todoItemWrapper.classList.add('todoItemWrapper')
-formWrapper.classList.add('formWrapperActive','formWrapperInactive')
 btnAddTodo.classList.add('btnAddTodoItem')
+formWrapper.classList.add('formWrapperActive', 'formWrapperInactive');
 //body content
 bodyTitle.textContent = 'No active project selected'
 todoHeadTitle.textContent = 'Title'
 todoHeadDescription.textContent = 'Description'
 todoHeadDate.textContent = 'Due Date'
 todoHeadPriority.textContent = 'Priority'
+todoHeadComplete.textContent = 'Completed'
 btnAddTodo.textContent = 'Add ToDo Item'
 //body append
+document.body.appendChild(formWrapper)
 body.append(bodyTitle,btnAddTodo,todoHeaderWrapper,todoItemWrapper)
-todoItemWrapper.appendChild(formWrapper)
-todoHeaderWrapper.append(todoHeadTitle,todoHeadDescription,todoHeadDate,todoHeadPriority)
+todoHeaderWrapper.append(todoHeadTitle,todoHeadDescription,todoHeadDate,todoHeadPriority,todoHeadComplete)
 //event listeners
 btnAddTodo.addEventListener('click', () =>{
     const activeProject = document.querySelector('.bodyTitle')

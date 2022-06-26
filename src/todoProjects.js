@@ -83,14 +83,25 @@ const todoFactory = (project, todoTitle, todoDescription, todoDate, todoPriority
                 const todoDescription = document.createElement('p')
                 const todoDate = document.createElement('p')
                 const todoPriority = document.createElement('p')
+                const todoBtnComplete = document.createElement('button')
                 //give values
                 todoTitle.textContent = todoItems[i].title
                 todoDescription.textContent = todoItems[i].description
                 todoDate.textContent = todoItems[i].date
                 todoPriority.textContent = todoItems[i].priority
-                //class?                
+                todoBtnComplete.textContent = '✓'
+                todoBtnComplete.classList.add('todoItemBtn')
+                //event listerner
+                todoBtnComplete.addEventListener('click', () => {
+                    completedTodo(newTodo.project, newTodo.title, newTodo.description, newTodo.date, newTodo.priority)
+                    todoTitle.remove()
+                    todoDescription.remove()
+                    todoDate.remove()
+                    todoPriority.remove()
+                    todoBtnComplete.remove()
+                })      
                 //append
-                itemWrapper.append(todoTitle,todoDescription,todoDate,todoPriority)
+                itemWrapper.append(todoTitle,todoDescription,todoDate,todoPriority,todoBtnComplete)
                 console.table(todoItems[i])
             }
         }
@@ -107,10 +118,23 @@ function createTodo(project, todoTitle, todoDescription, todoDate, todoPriority)
 function displayTodo(projectTitle) {
     todoItems.forEach(newTodo => {
         if(project == projectTitle){
-            console.log('win')
         }
     });
 }
 
+function completedTodo(project, todoTitle, todoDescription, todoDate, todoPriority) {
+    for (let i = 0; i < todoItems.length; i++) {
+        if((todoItems[i].project == project) && (todoItems[i].todoTitle == todoTitle) && (todoItems[i].todoDescription == todoDescription)(todoItems[i].todoDate == todoDate) && (todoItems[i].priority == todoPriority)){
+            todoItems.splice(i,1)
+            completedTodoItems.push({project, todoTitle, todoDescription, todoDate, todoPriority})
+            console.log('todo Item was removed, current todo Items: ')
+            console.table(todoItems)
+            console.log('to do Item was added to completed todo Items: ')
+            console.table(completedTodoItems)
+        }else(
+            console.log('something went wrong')
+        )
+    }
+}
 
 export {createProject, todoFactory, createTodo, projects, completedProjects, displayTodo}

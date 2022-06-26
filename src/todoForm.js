@@ -86,11 +86,13 @@ btnSubmit.addEventListener('click', () =>{
             itemWrapper.removeChild(itemWrapper.lastChild);
         }
         createTodo(project, title, description, date, priority)
+        //close form
+        removeForm()
+        btnAddTodo.classList.remove('btnAddTodoItemInactive')
+        formWrapper.classList.add('formWrapperInactive')
+    }else{
+        alert('somthing is missing, please check you entered a Title, Description and Date')
     }
-    //close form
-    removeForm()
-    btnAddTodo.classList.remove('btnAddTodoItemInactive')
-    formWrapper.classList.add('formWrapperInactive')
 })
 
 btnCancel.addEventListener('click', () =>{
