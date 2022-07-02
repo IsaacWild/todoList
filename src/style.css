@@ -248,6 +248,15 @@ body{
     pointer-events: none;
 }
 
+.todoActionWrapper{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
 .todoItemBtn{
     border: none;
     font-size: 1.7rem;
@@ -266,6 +275,15 @@ body{
     transform: translate(2px, -2px);
     transition: all 0.3s;
     box-shadow: -2px 2px 3px hsl(27, 0%, 35%);
+}
+
+.todoItemBtnEdit{
+    background-color: hsl(200, 75%, 70%);
+}
+
+.todoItemBtnEdit:hover{
+    background-color: hsl(200, 75%, 80%);
+
 }
 
 

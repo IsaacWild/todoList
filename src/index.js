@@ -83,7 +83,7 @@ const todoHeadTitle = document.createElement('p')
 const todoHeadDescription = document.createElement('p')
 const todoHeadDate = document.createElement('p')
 const todoHeadPriority = document.createElement('p')
-const todoHeadComplete = document.createElement('p')
+const todoHeadActions = document.createElement('p')
 const todoHeaderWrapper = document.createElement('div')
 const todoItemWrapper = document.createElement('div')
 const btnAddTodo = document.createElement('button')
@@ -95,7 +95,7 @@ todoHeadTitle.classList.add('todoHead', 'headTitle')
 todoHeadDescription.classList.add('todoHead', 'headDescription')
 todoHeadDate.classList.add('todoHead', 'headDate')
 todoHeadPriority.classList.add('todoHead', 'headPriority')
-todoHeadComplete.classList.add('todoHead')
+todoHeadActions.classList.add('todoHead')
 todoHeaderWrapper.classList.add('todoHeaderWrapper')
 todoItemWrapper.classList.add('todoItemWrapper')
 btnAddTodo.classList.add('btnAddTodoItem')
@@ -106,12 +106,12 @@ todoHeadTitle.textContent = 'Title'
 todoHeadDescription.textContent = 'Description'
 todoHeadDate.textContent = 'Due Date'
 todoHeadPriority.textContent = 'Priority'
-todoHeadComplete.textContent = 'Completed'
+todoHeadActions.textContent = 'Actions'
 btnAddTodo.textContent = 'Add ToDo Item'
 //body append
 document.body.appendChild(formWrapper)
 body.append(bodyTitle,btnAddTodo,todoHeaderWrapper,todoItemWrapper)
-todoHeaderWrapper.append(todoHeadTitle,todoHeadDescription,todoHeadDate,todoHeadPriority,todoHeadComplete)
+todoHeaderWrapper.append(todoHeadTitle,todoHeadDescription,todoHeadDate,todoHeadPriority,todoHeadActions)
 //event listeners
 btnAddTodo.addEventListener('click', () =>{
     const activeProject = document.querySelector('.bodyTitle')
