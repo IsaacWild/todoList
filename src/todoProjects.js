@@ -93,12 +93,15 @@ const todoFactory = (project, todoTitle, todoDescription, todoDate, todoPriority
                 todoPriority.textContent = todoItems[i].priority
                 todoBtnEdit.textContent = '✎'
                 todoBtnComplete.textContent = '✓'
+                todoBtnComplete.id = newTodo.ID;
                 todoActionWrapper.classList = 'todoActionWrapper'
                 todoBtnEdit.classList.add('todoItemBtn', 'todoItemBtnEdit')
                 todoBtnComplete.classList.add('todoItemBtn')
                 //event listerner
                 todoBtnComplete.addEventListener('click', () => {
-                    completedTodo(newTodo.project, newTodo.title, newTodo.description, newTodo.date, newTodo.priority)
+                    console.log('Item to be deleted: ')
+                    console.log(`Project: ${projectTitle} Title: ${todoTitle.textContent} Description: ${todoDescription.textContent} Date: ${todoDate.textContent} Priority: ${todoPriority.textContent}`)
+                    completedTodo(projectTitle,todoTitle.textContent, todoDescription.textContent,todoDate.textContent,todoPriority.textContent)
                     todoTitle.remove()
                     todoDescription.remove()
                     todoDate.remove()
@@ -128,24 +131,85 @@ function displayTodo(projectTitle) {
     });
 }
 
-function completedTodo(project, todoTitle, todoDescription, todoDate, todoPriority) {
-    console.log(`Project: ${project}  Title: ${todoTitle}  Description: ${todoDescription} Date: ${todoDate}  Priority: ${todoPriority}`)
-    
-    
-
-
-    // for (let i = 0; i < todoItems.length; i++) {
-    //     if ((todoItems[i].project == project) && (todoItems[i].todoTitle == todoTitle) && (todoItems[i].todoDescription == todoDescription)(todoItems[i].todoDate == todoDate) && (todoItems[i].priority == todoPriority)) {
-    //         todoItems.splice(i, 1)
-    //         completedTodoItems.push({ project, todoTitle, todoDescription, todoDate, todoPriority })
-    //         console.log('todo Item was removed, current todo Items: ')
-    //         console.table(todoItems)
-    //         console.log('to do Item was added to completed todo Items: ')
-    //         console.table(completedTodoItems)
-    //     } else (
-    //         console.log('something went wrong')
-    //     )
-    // }
+function completedTodo(project, title, description, date, priority) {
+    // console.log(`Given details - Project: ${project} Title: ${title} Description: ${description} Date: ${date} Priority: ${priority}`)
+    for (let i = 0; i < todoItems.length; i++) {
+        if(todoItems[i].project == project && todoItems[i].title == title && todoItems[i].description == description && todoItems[i].date == date && todoItems[i].priority == priority){
+            completedTodoItems.push({project, title, description, date, priority})
+            todoItems.splice(i,1)
+            console.log('item removed')
+        }else{
+            console.log('something went horribly wrong....')
+        }
+    }
+    console.log('Current todo Item array: ')
+    console.table(todoItems)
+    console.log('Completed todo Array: ')
+    console.table(completedTodoItems)
 }
+
+
+
+
+
+// alternative way to create todo's
+class todo {
+    constructor(project, title, description, date, priority){
+        this.project = project
+        this.title = title
+        this.description = description
+        this.date = date
+        this.priority = priority
+    }
+}
+
+function addTodoToArray(project, title, description, date, priority){
+    
+    const newTodo = new todo (project, title, description, date, priority)
+    todoItems.push(newTodo)
+    console.log('todo Array: ')
+    console.table(todoItems)
+    loadTodo(project)
+}
+
+function loadTodo(project){
+    const itemWrapper = document.querySelector('.todoItemWrapper')
+        for (let i = 0; i < todoItems.length; i++) {
+            if (todoItems[i].project == project) {
+                //create items
+                const todoTitle = document.createElement('p')
+                const todoDescription = document.createElement('p')
+                const todoDate = document.createElement('p')
+                const todoPriority = document.createElement('p')
+                const todoActionWrapper = document.createElement('div')
+                const todoBtnEdit = document.createElement('button')
+                const todoBtnComplete = document.createElement('button')
+                //give values
+                todoTitle.textContent = todoItems[i].title
+                todoDescription.textContent = todoItems[i].description
+                todoDate.textContent = todoItems[i].date
+                todoPriority.textContent = todoItems[i].priority
+                todoBtnEdit.textContent = '✎'
+                todoBtnComplete.textContent = '✓'
+                todoActionWrapper.classList = 'todoActionWrapper'
+                todoBtnEdit.classList.add('todoItemBtn', 'todoItemBtnEdit')
+                todoBtnComplete.classList.add('todoItemBtn')
+                //event listerner
+                todoBtnComplete.addEventListener('click', () => {
+                    console.log('Complete feature coming soon!')
+
+                })
+                todoBtnEdit.addEventListener('click', () =>{
+                    console.log('Edit feature coming soon!')
+
+                })
+                //append
+                itemWrapper.append(todoTitle, todoDescription, todoDate, todoPriority,todoActionWrapper)
+                todoActionWrapper.append(todoBtnEdit, todoBtnComplete)
+                console.table(todoItems[i])
+            }
+        }
+}
+
 
 export { createProject, todoFactory, createTodo, projects, completedProjects, displayTodo }
