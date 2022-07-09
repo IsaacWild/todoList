@@ -25,6 +25,9 @@ const projectFactory = (name) => {
         projectItem.addEventListener('click', () => {
             //load todo items into main body
             activeProTitle.textContent = name
+            clearTodo()
+            displayTodo(name)
+            console.log(`Displaid todo's for project: ${name}`)
         })
         projectItemComplete.addEventListener('click', () => {
             completeProject(name)
@@ -125,10 +128,16 @@ function createTodo(project, todoTitle, todoDescription, todoDate, todoPriority)
 }
 
 function displayTodo(projectTitle) {
-    todoItems.forEach(newTodo => {
-        if (project == projectTitle) {
-        }
-    });
+    for (let i = 0; i < todoItems.length; i++) {
+            todo.displayTodo(projectTitle)
+    }
+}
+
+function clearTodo(){
+    const todoWrapper = document.querySelector('.todoItemWrapper')
+    while (todoWrapper.firstChild) {
+        todoWrapper.removeChild(todoWrapper.lastChild);
+      }
 }
 
 function completedTodo(project, title, description, date, priority) {
@@ -148,68 +157,6 @@ function completedTodo(project, title, description, date, priority) {
     console.table(completedTodoItems)
 }
 
-
-
-
-
-// alternative way to create todo's
-class todo {
-    constructor(project, title, description, date, priority){
-        this.project = project
-        this.title = title
-        this.description = description
-        this.date = date
-        this.priority = priority
-    }
-}
-
-function addTodoToArray(project, title, description, date, priority){
-    
-    const newTodo = new todo (project, title, description, date, priority)
-    todoItems.push(newTodo)
-    console.log('todo Array: ')
-    console.table(todoItems)
-    loadTodo(project)
-}
-
-function loadTodo(project){
-    const itemWrapper = document.querySelector('.todoItemWrapper')
-        for (let i = 0; i < todoItems.length; i++) {
-            if (todoItems[i].project == project) {
-                //create items
-                const todoTitle = document.createElement('p')
-                const todoDescription = document.createElement('p')
-                const todoDate = document.createElement('p')
-                const todoPriority = document.createElement('p')
-                const todoActionWrapper = document.createElement('div')
-                const todoBtnEdit = document.createElement('button')
-                const todoBtnComplete = document.createElement('button')
-                //give values
-                todoTitle.textContent = todoItems[i].title
-                todoDescription.textContent = todoItems[i].description
-                todoDate.textContent = todoItems[i].date
-                todoPriority.textContent = todoItems[i].priority
-                todoBtnEdit.textContent = '✎'
-                todoBtnComplete.textContent = '✓'
-                todoActionWrapper.classList = 'todoActionWrapper'
-                todoBtnEdit.classList.add('todoItemBtn', 'todoItemBtnEdit')
-                todoBtnComplete.classList.add('todoItemBtn')
-                //event listerner
-                todoBtnComplete.addEventListener('click', () => {
-                    console.log('Complete feature coming soon!')
-
-                })
-                todoBtnEdit.addEventListener('click', () =>{
-                    console.log('Edit feature coming soon!')
-
-                })
-                //append
-                itemWrapper.append(todoTitle, todoDescription, todoDate, todoPriority,todoActionWrapper)
-                todoActionWrapper.append(todoBtnEdit, todoBtnComplete)
-                console.table(todoItems[i])
-            }
-        }
-}
 
 
 export { createProject, todoFactory, createTodo, projects, completedProjects, displayTodo }
