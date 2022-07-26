@@ -52,7 +52,6 @@ btnProjectCancel.addEventListener('click', () =>{
 btnProjectSubmit.addEventListener('click', () =>{
     let projectTitle = inputProjectTitle.value
     if(projectTitle != ''){
-        console.log('click')
         if(projects.length != 0){
             for (let i = 0; i < projects.length; i++) {
                 if(projectTitle == projects[i]){
