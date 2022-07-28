@@ -9,6 +9,7 @@ let completedTodoItems = []
 const projectFactory = (name) => {
     const newProject = () => {
         projects.push(name)
+        console.log(JSON.stringify(projects))
     }
     const displayProject = () => {
         const activeProWrapper = document.querySelector('.activeProWrapper')
@@ -49,7 +50,9 @@ function completeProject(projectName) {
     for (let i = 0; i < projects.length; i++) {
         if (projects[i] == projectName) {
             projects.splice(i, 1)
+            console.log(JSON.stringify(projects))
             completedProjects.push(projectName)
+            console.log(JSON.stringify(completedProjects))
             const completedProWrapper = document.querySelector('.completedProWrapper')
             const completedPro = document.createElement('button')
             completedPro.classList.add('completedPro')
@@ -68,6 +71,7 @@ const todoFactory = (project, todoTitle, todoDescription, todoDate, todoPriority
     newTodo.date = todoDate;
     newTodo.priority = todoPriority;
     todoItems.push(newTodo)
+    console.log(JSON.stringify(todoItems))
 
     const displayTodo = (projectTitle) => {
         const itemWrapper = document.querySelector('.todoItemWrapper')
@@ -153,7 +157,9 @@ function completedTodo(project, title, description, date, priority) {
     for (let i = 0; i < todoItems.length; i++) {
         if (todoItems[i].project == project && todoItems[i].title == title && todoItems[i].description == description && todoItems[i].date == date && todoItems[i].priority == priority) {
             completedTodoItems.push({ project, title, description, date, priority })
+            console.log(JSON.stringify(completedTodoItems))
             todoItems.splice(i, 1)
+            console.log(JSON.stringify(todoItems))
         } else {
         }
     }

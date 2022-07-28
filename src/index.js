@@ -72,6 +72,7 @@ btnClearCompleted.addEventListener('click', () =>{
         completedProWrapper.removeChild(completedProWrapper.lastChild);
       }
       completedProjects.length = 0;
+      console.log(JSON.stringify(completedProjects))
 })
 
 
