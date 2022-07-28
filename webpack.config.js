@@ -7,7 +7,7 @@ module.exports = {
         index: './src/index.js',
         todoForm: './src/todoForm.js',
         projectForm: './src/projectForm.js',
-        localStorage: '.src/localStorage.js',
+        localStorage: './src/localStorage.js',
       },
       devtool: 'inline-source-map',
       devServer: {
