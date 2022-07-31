@@ -1,3 +1,5 @@
+import { storeProjects, storeCompletedProjects, storeTodo } from "./localStorage"
+
 //creating projects
 //creating todo's
 //array of projects and todo's
@@ -10,6 +12,7 @@ const projectFactory = (name) => {
     const newProject = () => {
         projects.push(name)
         console.log(JSON.stringify(projects))
+        storeProjects()
     }
     const displayProject = () => {
         const activeProWrapper = document.querySelector('.activeProWrapper')
@@ -51,8 +54,10 @@ function completeProject(projectName) {
         if (projects[i] == projectName) {
             projects.splice(i, 1)
             console.log(JSON.stringify(projects))
+            storeProjects()
             completedProjects.push(projectName)
             console.log(JSON.stringify(completedProjects))
+            storeCompletedProjects()
             const completedProWrapper = document.querySelector('.completedProWrapper')
             const completedPro = document.createElement('button')
             completedPro.classList.add('completedPro')
@@ -72,6 +77,7 @@ const todoFactory = (project, todoTitle, todoDescription, todoDate, todoPriority
     newTodo.priority = todoPriority;
     todoItems.push(newTodo)
     console.log(JSON.stringify(todoItems))
+    storeTodo()
 
     const displayTodo = (projectTitle) => {
         const itemWrapper = document.querySelector('.todoItemWrapper')
@@ -160,6 +166,7 @@ function completedTodo(project, title, description, date, priority) {
             console.log(JSON.stringify(completedTodoItems))
             todoItems.splice(i, 1)
             console.log(JSON.stringify(todoItems))
+            storeTodo()
         } else {
         }
     }
@@ -167,4 +174,4 @@ function completedTodo(project, title, description, date, priority) {
 
 
 
-export { createProject, todoFactory, createTodo, projects, completedProjects, displayTodo }
+export { createProject, todoFactory, createTodo, projects, completedProjects, displayTodo, todoItems , completedTodoItems }

@@ -1,6 +1,6 @@
 //put the code here to grab array updates and set and get items and load them in
 
-import {projects} from './todoProjects'
+import {todoItems, completedTodoItems, projects, completedProjects} from './todoProjects'
 
 let proJSONHolder = '';
 
@@ -8,11 +8,35 @@ function storeProjects() {
     const projectJSON = JSON.stringify(projects)
     if (storageAvailable('localStorage')) {
         localStorage.setItem('storedProjects',projectJSON)
+        console.log('projects have been stored')
       }
       else {
         alert('Local storage is not avalible to save projects')
       }
       
+}
+
+function storeCompletedProjects() {
+    const projectJSON = JSON.stringify(completedProjects)
+    if (storageAvailable('localStorage')) {
+        localStorage.setItem('storedCompletedProjects',projectJSON)
+        console.log('completed projects have been stored')
+      }
+      else {
+        alert('Local storage is not avalible to save projects')
+      }
+      
+}
+
+function storeTodo() {
+    const projectJSON = JSON.stringify(todoItems)
+    if (storageAvailable('localStorage')) {
+        localStorage.setItem('storedTodoItems',projectJSON)
+        console.log('todo items have been stored')
+      }
+      else {
+        alert('Local storage is not avalible to save projects')
+      }
 }
 
 
@@ -45,3 +69,5 @@ function storageAvailable(type) {
             (storage && storage.length !== 0);
     }
 }
+
+export { storeProjects, storeCompletedProjects, storeTodo }

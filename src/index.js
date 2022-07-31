@@ -5,6 +5,8 @@ import icon from './icons/todoIcon.svg'
 import todoForm from './todoForm.js';
 import projectForm from './projectForm.js';
 import { completedProjects } from './todoProjects';
+import { storeCompletedProjects } from "./localStorage"
+
 
 
 //initial page wrapper container
@@ -73,6 +75,7 @@ btnClearCompleted.addEventListener('click', () =>{
       }
       completedProjects.length = 0;
       console.log(JSON.stringify(completedProjects))
+      storeCompletedProjects()
 })
 
 
