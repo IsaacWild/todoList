@@ -52,6 +52,7 @@ function createProject(projectName) {
 function completeProject(projectName) {
     for (let i = 0; i < projects.length; i++) {
         if (projects[i] == projectName) {
+            console.log(`test ping for completed project ${projectName}`)
             projects.splice(i, 1)
             console.log(JSON.stringify(projects))
             storeProjects()
@@ -174,4 +175,4 @@ function completedTodo(project, title, description, date, priority) {
 
 
 
-export { createProject, todoFactory, createTodo, projects, completedProjects, displayTodo, todoItems , completedTodoItems }
+export { createProject, completeProject, todoFactory, createTodo, projects, completedProjects, displayTodo, todoItems , completedTodoItems }

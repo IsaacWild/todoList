@@ -5,7 +5,7 @@ import icon from './icons/todoIcon.svg'
 import todoForm from './todoForm.js';
 import projectForm from './projectForm.js';
 import { completedProjects } from './todoProjects';
-import { storeCompletedProjects } from "./localStorage"
+import { storeCompletedProjects, loadSavedProjects, loadSavedCompletedProjects } from "./localStorage"
 
 
 
@@ -143,4 +143,5 @@ footer2.href = 'https://www.svgrepo.com/'
 footer1.href = 'https://github.com/IsaacWild/restaurantPage'
 //footer append
 footer.append(footer1, footer2)
-
+loadSavedProjects()
+loadSavedCompletedProjects()

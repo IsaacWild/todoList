@@ -1,48 +1,78 @@
 //put the code here to grab array updates and set and get items and load them in
 
-import {todoItems, completedTodoItems, projects, completedProjects} from './todoProjects'
+import { todoItems, completedTodoItems, projects, completedProjects, createProject , completeProject } from './todoProjects'
 
 let proJSONHolder = '';
 
 function storeProjects() {
     const projectJSON = JSON.stringify(projects)
     if (storageAvailable('localStorage')) {
-        localStorage.setItem('storedProjects',projectJSON)
+        localStorage.setItem('storedProjects', projectJSON)
         console.log('projects have been stored')
-      }
-      else {
-        alert('Local storage is not avalible to save projects')
-      }
-      
+    }
+    else {
+        console.log('Local storage is not avalible to save projects')
+    }
+
 }
 
 function storeCompletedProjects() {
     const projectJSON = JSON.stringify(completedProjects)
     if (storageAvailable('localStorage')) {
-        localStorage.setItem('storedCompletedProjects',projectJSON)
+        localStorage.setItem('storedCompletedProjects', projectJSON)
         console.log('completed projects have been stored')
-      }
-      else {
-        alert('Local storage is not avalible to save projects')
-      }
-      
+    }
+    else {
+        console.log('Local storage is not avalible to save projects')
+    }
+
 }
 
 function storeTodo() {
     const projectJSON = JSON.stringify(todoItems)
     if (storageAvailable('localStorage')) {
-        localStorage.setItem('storedTodoItems',projectJSON)
+        localStorage.setItem('storedTodoItems', projectJSON)
         console.log('todo items have been stored')
-      }
-      else {
-        alert('Local storage is not avalible to save projects')
-      }
+    }
+    else {
+        console.log('Local storage is not avalible to save projects')
+    }
+}
+
+function loadSavedProjects() {
+    let projects = JSON.parse(localStorage.getItem('storedProjects'))
+    console.log(`Loaded Projects:`)
+    console.log(projects)
+    if (projects != null) {
+        for (let i = 0; i < projects.length; i++) {
+            createProject(projects[i])
+        }
+    } else if(projects == null){
+        console.log(`No projects found in local storage`)
+    }
+}
+
+function loadSavedCompletedProjects() {
+    let completedProjects = JSON.parse(localStorage.getItem('storedCompletedProjects'))
+    console.log(`Loaded Completed Projects:`)
+    console.log(completedProjects)
+    if (completedProjects != null) {
+        for (let i = 0; i < completedProjects.length; i++) {      
+            const completedProWrapper = document.querySelector('.completedProWrapper')
+            const completedPro = document.createElement('button')
+            completedPro.classList.add('completedPro')
+            completedPro.textContent = completedProjects[i]
+            completedProWrapper.appendChild(completedPro)
+        }
+    } else if(completedProjects == null){
+        console.log(`No completed projects found in local storage`)
+    }
 }
 
 
 
-function getProjects() {
-    proJSONHolder = localStorage.getItem('storedProjects')
+function loadSavedTodo() {
+
 }
 
 function storageAvailable(type) {
@@ -54,7 +84,7 @@ function storageAvailable(type) {
         storage.removeItem(x);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e instanceof DOMException && (
             // everything except Firefox
             e.code === 22 ||
@@ -70,4 +100,4 @@ function storageAvailable(type) {
     }
 }
 
-export { storeProjects, storeCompletedProjects, storeTodo }
+export { storeProjects, storeCompletedProjects, storeTodo, loadSavedProjects, loadSavedCompletedProjects }
