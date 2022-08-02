@@ -4,7 +4,7 @@ import './projectFormStyle.css'
 import icon from './icons/todoIcon.svg'
 import todoForm from './todoForm.js';
 import projectForm from './projectForm.js';
-import { completedProjects } from './todoProjects';
+import { projects, completedProjects } from './todoProjects';
 import { storeCompletedProjects, loadSavedProjects, loadSavedCompletedProjects } from "./localStorage"
 
 

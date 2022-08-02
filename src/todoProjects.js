@@ -52,10 +52,12 @@ function createProject(projectName) {
 function completeProject(projectName) {
     for (let i = 0; i < projects.length; i++) {
         if (projects[i] == projectName) {
-            console.log(`test ping for completed project ${projectName}`)
+            //remove from active project array
             projects.splice(i, 1)
             console.log(JSON.stringify(projects))
             storeProjects()
+
+            //add to completed projects array
             completedProjects.push(projectName)
             console.log(JSON.stringify(completedProjects))
             storeCompletedProjects()
@@ -68,6 +70,16 @@ function completeProject(projectName) {
         }
     }
 }
+
+function loadJSONCompletedProjects(name){
+    const completedProWrapper = document.querySelector('.completedProWrapper')
+    const completedPro = document.createElement('button')
+    completedPro.classList.add('completedPro')
+    completedPro.textContent = name
+    completedProWrapper.appendChild(completedPro)
+    completedProjects.push(name)
+}
+
 
 const todoFactory = (project, todoTitle, todoDescription, todoDate, todoPriority) => {
     const newTodo = {};
@@ -175,4 +187,5 @@ function completedTodo(project, title, description, date, priority) {
 
 
 
-export { createProject, completeProject, todoFactory, createTodo, projects, completedProjects, displayTodo, todoItems , completedTodoItems }
+
+export { createProject, completeProject, todoFactory, createTodo, projects, completedProjects, displayTodo, todoItems , completedTodoItems, loadJSONCompletedProjects }

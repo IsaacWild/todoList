@@ -1,8 +1,6 @@
 //put the code here to grab array updates and set and get items and load them in
 
-import { todoItems, completedTodoItems, projects, completedProjects, createProject , completeProject } from './todoProjects'
-
-let proJSONHolder = '';
+import { todoItems, completedTodoItems, projects, completedProjects, createProject, loadJSONCompletedProjects } from './todoProjects'
 
 function storeProjects() {
     const projectJSON = JSON.stringify(projects)
@@ -41,8 +39,6 @@ function storeTodo() {
 
 function loadSavedProjects() {
     let projects = JSON.parse(localStorage.getItem('storedProjects'))
-    console.log(`Loaded Projects:`)
-    console.log(projects)
     if (projects != null) {
         for (let i = 0; i < projects.length; i++) {
             createProject(projects[i])
@@ -58,18 +54,13 @@ function loadSavedCompletedProjects() {
     console.log(completedProjects)
     if (completedProjects != null) {
         for (let i = 0; i < completedProjects.length; i++) {      
-            const completedProWrapper = document.querySelector('.completedProWrapper')
-            const completedPro = document.createElement('button')
-            completedPro.classList.add('completedPro')
-            completedPro.textContent = completedProjects[i]
-            completedProWrapper.appendChild(completedPro)
+            loadJSONCompletedProjects(completedProjects[i])
         }
+    storeCompletedProjects()
     } else if(completedProjects == null){
         console.log(`No completed projects found in local storage`)
     }
 }
-
-
 
 function loadSavedTodo() {
 
