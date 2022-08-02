@@ -62,7 +62,9 @@ function loadSavedCompletedProjects() {
     }
 }
 
-function loadSavedTodo() {
+function loadTodo() {
+    let todoItems = JSON.parse(localStorage.getItem('storedTodoItems'))
+    
 
 }
 
