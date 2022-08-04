@@ -56,6 +56,7 @@ btnProjectSubmit.addEventListener('click', () =>{
             for (let i = 0; i < projects.length; i++) {
                 if(projectTitle == projects[i]){
                     alert('You have an active project with this title already')
+                    break
                 }else{
                     createProject(projectTitle);
                     clearForm()
