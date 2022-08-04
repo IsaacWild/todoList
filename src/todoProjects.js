@@ -80,6 +80,16 @@ function loadJSONCompletedProjects(name){
     completedProjects.push(name)
 }
 
+function loadJSONtodoItems(project, todoTitle, todoDescription, todoDate, todoPriority){
+    const newTodo = {};
+    newTodo.project = project;
+    newTodo.title = todoTitle;
+    newTodo.description = todoDescription;
+    newTodo.date = todoDate;
+    newTodo.priority = todoPriority;
+    todoItems.push(newTodo)
+}
+
 
 const todoFactory = (project, todoTitle, todoDescription, todoDate, todoPriority) => {
     const newTodo = {};
@@ -188,4 +198,4 @@ function completedTodo(project, title, description, date, priority) {
 
 
 
-export { createProject, completeProject, todoFactory, createTodo, projects, completedProjects, displayTodo, todoItems , completedTodoItems, loadJSONCompletedProjects }
+export { createProject, completeProject, todoFactory, createTodo, projects, completedProjects, displayTodo, todoItems , completedTodoItems, loadJSONCompletedProjects, loadJSONtodoItems }

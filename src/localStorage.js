@@ -1,6 +1,6 @@
 //put the code here to grab array updates and set and get items and load them in
 
-import { todoItems, completedTodoItems, projects, completedProjects, createProject, loadJSONCompletedProjects } from './todoProjects'
+import { todoItems, completedTodoItems, projects, completedProjects, createProject, loadJSONCompletedProjects, loadJSONtodoItems } from './todoProjects'
 
 function storeProjects() {
     const projectJSON = JSON.stringify(projects)
@@ -43,7 +43,7 @@ function loadSavedProjects() {
         for (let i = 0; i < projects.length; i++) {
             createProject(projects[i])
         }
-    } else if(projects == null){
+    } else if (projects == null) {
         console.log(`No projects found in local storage`)
     }
 }
@@ -53,20 +53,27 @@ function loadSavedCompletedProjects() {
     console.log(`Loaded Completed Projects:`)
     console.log(completedProjects)
     if (completedProjects != null) {
-        for (let i = 0; i < completedProjects.length; i++) {      
+        for (let i = 0; i < completedProjects.length; i++) {
             loadJSONCompletedProjects(completedProjects[i])
         }
-    storeCompletedProjects()
-    } else if(completedProjects == null){
+        storeCompletedProjects()
+    } else if (completedProjects == null) {
         console.log(`No completed projects found in local storage`)
     }
 }
 
 function loadTodo() {
     let todoItems = JSON.parse(localStorage.getItem('storedTodoItems'))
-    
-
+    if (projects.length != 0) {
+        for (let i = 0; i < todoItems.length; i++) {
+            loadJSONtodoItems(todoItems[i].project, todoItems[i].title, todoItems[i].description, todoItems[i].date, todoItems[i].priority)
+        }
+    } else {
+        console.log('No projects avalible')
+    }
 }
+
+
 
 function storageAvailable(type) {
     let storage;
@@ -93,4 +100,4 @@ function storageAvailable(type) {
     }
 }
 
-export { storeProjects, storeCompletedProjects, storeTodo, loadSavedProjects, loadSavedCompletedProjects }
+export { storeProjects, storeCompletedProjects, storeTodo, loadSavedProjects, loadSavedCompletedProjects, loadTodo }

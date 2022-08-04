@@ -5,7 +5,7 @@ import icon from './icons/todoIcon.svg'
 import todoForm from './todoForm.js';
 import projectForm from './projectForm.js';
 import { projects, completedProjects } from './todoProjects';
-import { storeCompletedProjects, loadSavedProjects, loadSavedCompletedProjects } from "./localStorage"
+import { storeCompletedProjects, loadSavedProjects, loadSavedCompletedProjects, loadTodo } from "./localStorage"
 
 
 
@@ -18,7 +18,7 @@ const header = document.createElement('div')
 const sidebar = document.createElement('div')
 const body = document.createElement('div')
 const footer = document.createElement('div')
-pageWrapper.append(header, sidebar,body,footer)
+pageWrapper.append(header, sidebar, body, footer)
 
 //header --v
 //header layout
@@ -61,21 +61,21 @@ completeTitle.textContent = 'Completed Projects'
 btnAddProject.textContent = 'Add Project'
 btnClearCompleted.textContent = 'Clear Completed'
 //sidebar append
-sidebar.append(projectFormWrapper,activeTitle,activeProWrapper,completeTitle, completedProWrapper);
+sidebar.append(projectFormWrapper, activeTitle, activeProWrapper, completeTitle, completedProWrapper);
 activeTitle.appendChild(btnAddProject)
 completeTitle.appendChild(btnClearCompleted)
 //event listeners
-btnAddProject.addEventListener('click', () =>{
+btnAddProject.addEventListener('click', () => {
     projectFormWrapper.classList.remove('projectFormWrapperInactive')
     projectForm()
 })
-btnClearCompleted.addEventListener('click', () =>{
+btnClearCompleted.addEventListener('click', () => {
     while (completedProWrapper.firstChild) {
         completedProWrapper.removeChild(completedProWrapper.lastChild);
-      }
-      completedProjects.length = 0;
-      console.log(JSON.stringify(completedProjects))
-      storeCompletedProjects()
+    }
+    completedProjects.length = 0;
+    console.log(JSON.stringify(completedProjects))
+    storeCompletedProjects()
 })
 
 
@@ -113,15 +113,15 @@ todoHeadActions.textContent = 'Actions'
 btnAddTodo.textContent = 'Add ToDo Item'
 //body append
 document.body.appendChild(formWrapper)
-body.append(bodyTitle,btnAddTodo,todoHeaderWrapper,todoItemWrapper)
-todoHeaderWrapper.append(todoHeadTitle,todoHeadDescription,todoHeadDate,todoHeadPriority,todoHeadActions)
+body.append(bodyTitle, btnAddTodo, todoHeaderWrapper, todoItemWrapper)
+todoHeaderWrapper.append(todoHeadTitle, todoHeadDescription, todoHeadDate, todoHeadPriority, todoHeadActions)
 //event listeners
-btnAddTodo.addEventListener('click', () =>{
+btnAddTodo.addEventListener('click', () => {
     const activeProject = document.querySelector('.bodyTitle')
     let project = activeProject.textContent
-    if ((project == 'No active project selected')||(project == 'Active project was marked complete')){
+    if ((project == 'No active project selected') || (project == 'Active project was marked complete')) {
         alert('Please select an active project')
-    }else{
+    } else {
         todoForm()
         btnAddTodo.classList.add('btnAddTodoItemInactive')
     }
@@ -145,3 +145,4 @@ footer1.href = 'https://github.com/IsaacWild/restaurantPage'
 footer.append(footer1, footer2)
 loadSavedProjects()
 loadSavedCompletedProjects()
+loadTodo()
