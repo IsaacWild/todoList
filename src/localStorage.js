@@ -64,7 +64,7 @@ function loadSavedCompletedProjects() {
 
 function loadTodo() {
     let todoItems = JSON.parse(localStorage.getItem('storedTodoItems'))
-    if (projects.length != 0) {
+    if (todoItems != null) {
         for (let i = 0; i < todoItems.length; i++) {
             loadJSONtodoItems(todoItems[i].project, todoItems[i].title, todoItems[i].description, todoItems[i].date, todoItems[i].priority)
         }
